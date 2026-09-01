@@ -1,0 +1,80 @@
+/* Garimpa Drink — Color tokens
+   ------------------------------------------------------------------
+   The brand mark is vivid (magenta, cobalt, amber, grain). The system
+   is deliberately RESTRAINED: a warm paper/ink neutral base carries the
+   UI, magenta is the single signature accent, and cobalt/amber/rust are
+   used sparingly for editorial moments. Color is a seasoning, not a wash. */
+
+:root {
+  /* ---- Brand palette (raw) ---- */
+  --garimpa-magenta: #ba1971;   /* signature — "garimpado" gem */
+  --garimpa-magenta-600: #a01362;
+  --garimpa-magenta-700: #840f51;
+  --garimpa-pink: #ed72a6;       /* soft companion to magenta */
+  --garimpa-cobalt: #2747e0;     /* the logo blue */
+  --garimpa-cobalt-600: #1f39be;
+  --garimpa-indigo: #3b1bd1;     /* deep accent, used rarely */
+  --garimpa-amber: #f2a623;      /* the sunrise */
+  --garimpa-amber-600: #d98a0c;
+  --garimpa-rust: #a8431a;       /* warm earth accent */
+
+  /* ---- Warm neutrals ---- */
+  --paper: #faf6f0;     /* default page background */
+  --paper-dim: #f2ebe1; /* recessed / alt sections */
+  --card: #ffffff;      /* raised surfaces */
+  --ink: #1b1512;       /* near-black, warm */
+  --ink-soft: #3a322d;
+  --stone-700: #5c524b;
+  --stone-500: #8a7d73;
+  --stone-400: #a89c91;
+  --stone-300: #cfc5ba;
+  --stone-200: #e6ddd2;
+  --stone-100: #f0e9df;
+  --night: #14100e;     /* dark-section background */
+  --night-soft: #221b17;
+
+  /* ---- Semantic aliases ---- */
+  --surface-page: var(--paper);
+  --surface-alt: var(--paper-dim);
+  --surface-card: var(--card);
+  --surface-night: var(--night);
+  --surface-inset: var(--stone-100);
+
+  --text-strong: var(--ink);
+  --text-body: var(--ink-soft);
+  --text-muted: var(--stone-500);
+  --text-faint: var(--stone-400);
+  --text-on-color: #ffffff;
+  --text-on-night: #f3ece2;
+
+  --border-hairline: var(--stone-200);
+  --border-strong: var(--stone-300);
+  --border-on-night: rgba(243, 236, 226, 0.14);
+
+  --brand-primary: var(--garimpa-magenta);
+  --brand-primary-hover: var(--garimpa-magenta-600);
+  --brand-primary-press: var(--garimpa-magenta-700);
+  --brand-on-primary: #ffffff;
+
+  --accent-cobalt: var(--garimpa-cobalt);
+  --accent-amber: var(--garimpa-amber);
+  --accent-rust: var(--garimpa-rust);
+  --accent-pink: var(--garimpa-pink);
+
+  /* Tints for soft backgrounds / chips */
+  --tint-magenta: #f7e6ef;
+  --tint-cobalt: #e4e8fb;
+  --tint-amber: #fbeccd;
+  --tint-rust: #f3e2d8;
+
+  /* ---- Status ---- */
+  --status-success: #2f8f5b;
+  --status-success-tint: #e1f0e7;
+  --status-warning: var(--garimpa-amber);
+  --status-warning-tint: var(--tint-amber);
+  --status-danger: #c0392b;
+  --status-danger-tint: #f6e1de;
+
+  /* ---- Focus ring ---- */
+  --focus-ring: color-mix(in srgb, var(--garimpa-cobalt) 55%, transparent);
+}

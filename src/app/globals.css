@@ -1,0 +1,44 @@
+@import "../styles/tokens/colors.css";
+@import "../styles/tokens/typography.css";
+@import "../styles/tokens/spacing.css";
+@import "../styles/tokens/effects.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--brand-primary-hover);
+}
+
+.rail::-webkit-scrollbar {
+  height: 0;
+}
+
+.link-underline {
+  color: var(--text-strong);
+  border-bottom: 1.5px solid var(--text-strong);
+}
+
+.link-underline:hover {
+  color: var(--brand-primary);
+  border-bottom-color: var(--brand-primary);
+}
