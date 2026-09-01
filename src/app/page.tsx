@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import RoleCarousel from "@/components/RoleCarousel";
+import Tools from "@/components/Tools";
 import HowIWork from "@/components/HowIWork";
 import Footer from "@/components/Footer";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <Header />
       <Hero />
       <RoleCarousel />
+      <Tools />
       <HowIWork />
       <Footer />
     </div>
