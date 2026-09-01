@@ -1,6 +1,7 @@
 import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
 import GrainBlock from "@/components/ui/GrainBlock";
+import { LINKEDIN_URL } from "@/data/links";
 
 export default function HowIWork() {
   return (
@@ -38,8 +39,7 @@ export default function HowIWork() {
             </p>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
-            {/* TODO: point at the real LinkedIn profile URL */}
-            <Button variant="night" size="lg">
+            <Button href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" variant="night" size="lg">
               Ver no LinkedIn
             </Button>
             {/* TODO: link to the real CV file */}

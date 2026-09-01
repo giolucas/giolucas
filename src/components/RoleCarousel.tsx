@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import IconButton from "@/components/ui/IconButton";
 import RoleCard from "@/components/RoleCard";
 import { roles } from "@/data/roles";
+import { LINKEDIN_URL } from "@/data/links";
 
 export default function RoleCarousel() {
   const [index, setIndex] = useState(0);
@@ -90,9 +91,10 @@ export default function RoleCarousel() {
           padding: "clamp(20px,3vw,32px) clamp(16px,4vw,56px) 0",
         }}
       >
-        {/* TODO: point at the real LinkedIn profile URL */}
         <a
-          href="#"
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="link-underline"
           style={{
             display: "inline-flex",

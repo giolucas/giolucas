@@ -1,22 +1,27 @@
 "use client";
 
-import { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
+import { ButtonHTMLAttributes, CSSProperties, MouseEvent, ReactNode } from "react";
 
 /**
  * Garimpa Drink design system — Button.
  * Primary actions use the magenta signature; secondary is a hairline-outlined
  * paper button; ghost is text-only; "night" inverts for dark sections.
+ * Pass `href` to render an <a> styled identically instead of a <button>.
  */
 
 type Variant = "primary" | "secondary" | "ghost" | "night";
 type Size = "sm" | "md" | "lg";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "style"> {
   variant?: Variant;
   size?: Size;
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
   fullWidth?: boolean;
+  style?: CSSProperties;
+  href?: string;
+  target?: string;
+  rel?: string;
 }
 
 const sizes: Record<Size, { fontSize: string; padding: string; height: number; gap: number; radius: string }> = {
@@ -41,6 +46,9 @@ export default function Button({
   disabled = false,
   type = "button",
   style = {},
+  href,
+  target,
+  rel,
   children,
   onMouseEnter,
   onMouseLeave,
@@ -70,45 +78,70 @@ export default function Button({
     transition:
       "background var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard)",
     WebkitTapHighlightColor: "transparent",
+    textDecoration: "none",
     ...v,
     ...style,
   };
+
+  const onEnter = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    if (!disabled) {
+      if (variant === "primary") e.currentTarget.style.background = "var(--brand-primary-hover)";
+      else if (variant === "secondary") e.currentTarget.style.background = "var(--surface-inset)";
+      else if (variant === "ghost") e.currentTarget.style.background = "var(--tint-magenta)";
+      else if (variant === "night") e.currentTarget.style.background = "#ffffff";
+    }
+    onMouseEnter?.(e as MouseEvent<HTMLButtonElement>);
+  };
+  const onLeave = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    if (!disabled) {
+      e.currentTarget.style.background = (v.background as string) ?? "";
+      e.currentTarget.style.transform = "none";
+    }
+    onMouseLeave?.(e as MouseEvent<HTMLButtonElement>);
+  };
+  const onDown = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    if (!disabled) {
+      e.currentTarget.style.transform = "translateY(1px) scale(0.99)";
+      if (variant === "primary") e.currentTarget.style.background = "var(--brand-primary-press)";
+    }
+    onMouseDown?.(e as MouseEvent<HTMLButtonElement>);
+  };
+  const onUp = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    if (!disabled) {
+      e.currentTarget.style.transform = "none";
+      if (variant === "primary") e.currentTarget.style.background = "var(--brand-primary-hover)";
+    }
+    onMouseUp?.(e as MouseEvent<HTMLButtonElement>);
+  };
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target={target}
+        rel={rel}
+        style={base}
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
+        onMouseDown={onDown}
+        onMouseUp={onUp}
+      >
+        {iconLeft}
+        {children}
+        {iconRight}
+      </a>
+    );
+  }
 
   return (
     <button
       type={type}
       disabled={disabled}
       style={base}
-      onMouseEnter={(e) => {
-        if (!disabled) {
-          if (variant === "primary") e.currentTarget.style.background = "var(--brand-primary-hover)";
-          else if (variant === "secondary") e.currentTarget.style.background = "var(--surface-inset)";
-          else if (variant === "ghost") e.currentTarget.style.background = "var(--tint-magenta)";
-          else if (variant === "night") e.currentTarget.style.background = "#ffffff";
-        }
-        onMouseEnter?.(e);
-      }}
-      onMouseLeave={(e) => {
-        if (!disabled) {
-          e.currentTarget.style.background = (v.background as string) ?? "";
-          e.currentTarget.style.transform = "none";
-        }
-        onMouseLeave?.(e);
-      }}
-      onMouseDown={(e) => {
-        if (!disabled) {
-          e.currentTarget.style.transform = "translateY(1px) scale(0.99)";
-          if (variant === "primary") e.currentTarget.style.background = "var(--brand-primary-press)";
-        }
-        onMouseDown?.(e);
-      }}
-      onMouseUp={(e) => {
-        if (!disabled) {
-          e.currentTarget.style.transform = "none";
-          if (variant === "primary") e.currentTarget.style.background = "var(--brand-primary-hover)";
-        }
-        onMouseUp?.(e);
-      }}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      onMouseDown={onDown}
+      onMouseUp={onUp}
       {...rest}
     >
       {iconLeft}
