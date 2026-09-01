@@ -84,7 +84,7 @@ export const roles: Role[] = [
     title: "Head de Produto e Experiência",
     period: "dez 2020 — mai 2023",
     place: "2 anos 6 meses",
-    badge: "116 zuppers",
+    badge: "Liderando 116 zuppers",
     badgeTone: "cobalt",
     color: "var(--night-soft)",
     summary:
