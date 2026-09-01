@@ -30,18 +30,16 @@ export default function Header() {
           borderBottom: "1px solid var(--border-hairline)",
         }}
       >
-        <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, flex: "none" }}>
-          <span
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "var(--text-lg)",
-              color: "var(--text-strong)",
-              letterSpacing: "var(--tracking-display)",
-            }}
-          >
-            Giovanni<span style={{ fontStyle: "italic", color: "var(--brand-primary)" }}> Lucas</span>
-          </span>
-        </a>
+        <Button
+          href="/cv"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="secondary"
+          size="md"
+          style={{ flex: "none" }}
+        >
+          Baixar CV
+        </Button>
 
         <nav
           style={{

@@ -11,6 +11,19 @@ export default function Hero() {
     >
       <Eyebrow rule>Carreira consolidada em startups e corporações</Eyebrow>
 
+      <p
+        style={{
+          margin: "16px 0 0",
+          fontFamily: "var(--font-display)",
+          fontWeight: 400,
+          fontSize: "clamp(1.15rem,2.4vw,1.5rem)",
+          letterSpacing: "var(--tracking-display)",
+          color: "var(--text-strong)",
+        }}
+      >
+        Giovanni<span style={{ fontStyle: "italic", color: "var(--brand-primary)" }}> Lucas</span>
+      </p>
+
       <h1
         style={{
           margin: "18px 0 0",
