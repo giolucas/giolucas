@@ -9,7 +9,7 @@ export default function Hero() {
         margin: "0 auto",
       }}
     >
-      <Eyebrow rule>Trajetória garimpada</Eyebrow>
+      <Eyebrow rule>Carreira consolidada em startups e corporações</Eyebrow>
 
       <h1
         style={{
