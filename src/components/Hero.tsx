@@ -13,10 +13,11 @@ export default function Hero() {
 
       <p
         style={{
-          margin: "16px 0 0",
+          margin: "20px 0 0",
           fontFamily: "var(--font-display)",
           fontWeight: 400,
-          fontSize: "clamp(1.15rem,2.4vw,1.5rem)",
+          fontSize: "clamp(2rem,5vw,3.25rem)",
+          lineHeight: 1.05,
           letterSpacing: "var(--tracking-display)",
           color: "var(--text-strong)",
         }}
@@ -26,7 +27,7 @@ export default function Hero() {
 
       <h1
         style={{
-          margin: "18px 0 0",
+          margin: "10px 0 0",
           fontFamily: "var(--font-display)",
           fontWeight: 400,
           fontSize: "clamp(2.25rem,7.4vw,4.6rem)",
