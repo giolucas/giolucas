@@ -50,8 +50,8 @@ export default function Hero() {
           maxWidth: "60ch",
         }}
       >
-        Experimentação, métricas e times. Passagens por Superlógica, Stefanini, Zup, Advice, Alura e CRMBonus — e
-        sala de aula na FIAP desde 2020.
+        Experimentação, métricas e gestão de times. Passagens por Superlógica, Stefanini, Zup, Advice, Alura e
+        CRMBonus — atuando também como professor universitário desde 2020.
       </p>
       <a
         href="#trajetoria"

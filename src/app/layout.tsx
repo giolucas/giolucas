@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Giovanni Lucas — Growth, Produto, IA",
   description:
-    "Treze anos de carreira trabalhando para impactar empresas com estratégias de growth e produto. Passagens por Superlógica, Stefanini, Zup, Advice, Alura e CRMBonus, e sala de aula na FIAP desde 2020.",
+    "Treze anos de carreira trabalhando para impactar empresas com estratégias de growth e produto. Experimentação, métricas e gestão de times. Passagens por Superlógica, Stefanini, Zup, Advice, Alura e CRMBonus, atuando também como professor universitário desde 2020.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
