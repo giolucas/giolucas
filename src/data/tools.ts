@@ -28,7 +28,7 @@ export const aiTools: string[] = [
   "Make",
   "Lovable",
   "NotebookLM",
-  "Claude (Skills, Artifacts, Projects)",
+  "Claude (Code, Design, Skills, Artifacts, Projects)",
   "Figma Make",
   "Gemini",
 ];
