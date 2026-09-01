@@ -24,7 +24,7 @@ export default function Hero() {
           maxWidth: "20ch",
         }}
       >
-        Dez anos construindo growth e produto.
+        Treze anos de carreira
       </h1>
       <p
         style={{
@@ -39,7 +39,7 @@ export default function Hero() {
           maxWidth: "22ch",
         }}
       >
-        De primeiro growth hacker a head de produto.
+        trabalhando para impactar empresas com estratégias de growth e produto.
       </p>
       <p
         style={{
