@@ -2,20 +2,11 @@
 
 import { useState } from "react";
 import Button from "@/components/ui/Button";
+import { LINKEDIN_URL_CONTATO, LINKEDIN_URL_FALAR_COMIGO } from "@/data/links";
 
-// Nav destinations beyond "Trajetória" have no real pages/sections yet —
-// left as "#" placeholders (TODO: point at real routes/anchors once they exist).
 const NAV_LINKS = [
   { label: "Trajetória", href: "#trajetoria" },
-  { label: "Ensino", href: "#" },
-  { label: "Contato", href: "#" },
-];
-
-const DRAWER_LINKS = [
-  { label: "Trajetória", href: "#trajetoria" },
-  { label: "Ensino", href: "#" },
-  { label: "Frameworks", href: "#" },
-  { label: "Contato", href: "#" },
+  { label: "Contato", href: LINKEDIN_URL_CONTATO, target: "_blank", rel: "noopener noreferrer" },
 ];
 
 export default function Header() {
@@ -62,7 +53,13 @@ export default function Header() {
           }}
         >
           {NAV_LINKS.map((link) => (
-            <a key={link.label} href={link.href} style={{ color: "var(--text-body)" }}>
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.target}
+              rel={link.rel}
+              style={{ color: "var(--text-body)" }}
+            >
               {link.label}
             </a>
           ))}
@@ -70,6 +67,9 @@ export default function Header() {
 
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <Button
+            href={LINKEDIN_URL_FALAR_COMIGO}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{ background: "var(--ink)", color: "#fff", borderRadius: "var(--radius-pill)", boxShadow: "none" }}
           >
             Falar comigo
@@ -145,10 +145,12 @@ export default function Header() {
                 ✕
               </button>
             </div>
-            {DRAWER_LINKS.map((link) => (
+            {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
+                target={link.target}
+                rel={link.rel}
                 onClick={toggleMenu}
                 style={{
                   fontFamily: "var(--font-display)",
