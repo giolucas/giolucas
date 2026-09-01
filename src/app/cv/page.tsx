@@ -9,35 +9,50 @@ export const metadata: Metadata = {
 
 export default function CvPage() {
   return (
-    <div style={{ position: "relative", height: "100vh", background: "var(--stone-100)" }}>
-      <embed src={CV_PATH} type="application/pdf" style={{ width: "100%", height: "100%", border: "none" }} />
+    <div style={{ display: "flex", flexDirection: "column", height: "100dvh", background: "var(--stone-100)" }}>
+      <embed
+        src={CV_PATH}
+        type="application/pdf"
+        style={{ flex: "1 1 auto", minHeight: 0, width: "100%", border: "none" }}
+      />
 
-      <a
-        href={CV_PATH}
-        download="Giovanni-Lucas-Curriculo.pdf"
+      {/* A dedicated bar (not an overlay) so this stays visible even on mobile
+          Safari, where the native PDF plugin can render above fixed-position
+          elements layered on top of it. */}
+      <div
         style={{
-          position: "fixed",
-          bottom: "clamp(16px,4vw,32px)",
-          right: "clamp(16px,4vw,32px)",
-          display: "inline-flex",
+          flex: "none",
+          display: "flex",
+          justifyContent: "flex-end",
           alignItems: "center",
-          gap: 10,
-          height: 54,
-          padding: "0 26px",
-          borderRadius: "var(--radius-pill)",
-          background: "var(--brand-primary)",
-          color: "var(--brand-on-primary)",
-          fontFamily: "var(--font-sans)",
-          fontSize: "var(--text-sm)",
-          fontWeight: "var(--weight-semibold)",
-          letterSpacing: "0.01em",
-          textDecoration: "none",
+          padding: "12px clamp(16px,4vw,32px)",
+          background: "var(--paper)",
+          borderTop: "1px solid var(--border-hairline)",
           boxShadow: "var(--shadow-lg)",
-          transition: "background var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard)",
         }}
       >
-        <span style={{ fontSize: "1.1em" }}>↓</span> Baixar CV
-      </a>
+        <a
+          href={CV_PATH}
+          download="Giovanni-Lucas-Curriculo.pdf"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: 48,
+            padding: "0 26px",
+            borderRadius: "var(--radius-pill)",
+            background: "var(--brand-primary)",
+            color: "var(--brand-on-primary)",
+            fontFamily: "var(--font-sans)",
+            fontSize: "var(--text-sm)",
+            fontWeight: "var(--weight-semibold)",
+            letterSpacing: "0.01em",
+            textDecoration: "none",
+          }}
+        >
+          Baixar CV
+        </a>
+      </div>
     </div>
   );
 }
