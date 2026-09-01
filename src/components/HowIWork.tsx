@@ -42,8 +42,10 @@ export default function HowIWork() {
             <Button href={LINKEDIN_URL_VER_NO_LINKEDIN} target="_blank" rel="noopener noreferrer" variant="night" size="lg">
               Ver no LinkedIn
             </Button>
-            {/* TODO: link to the real CV file */}
             <Button
+              href="/cv"
+              target="_blank"
+              rel="noopener noreferrer"
               variant="ghost"
               size="lg"
               style={{ color: "var(--text-on-night)", boxShadow: "inset 0 0 0 1px var(--border-on-night)" }}
