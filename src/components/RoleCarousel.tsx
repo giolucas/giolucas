@@ -107,21 +107,6 @@ export default function RoleCarousel() {
         >
           LinkedIn <span>→</span>
         </a>
-        {/* TODO: point at the real FIAP courses page */}
-        <a
-          href="#"
-          className="link-underline"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            fontSize: "var(--text-md)",
-            fontWeight: "var(--weight-medium)",
-            paddingBottom: 4,
-          }}
-        >
-          Cursos FIAP <span>→</span>
-        </a>
       </div>
     </section>
   );
