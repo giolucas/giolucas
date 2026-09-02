@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Button from "@/components/ui/Button";
-import { LINKEDIN_URL_CONTATO, LINKEDIN_URL_FALAR_COMIGO } from "@/data/links";
+import { LINKEDIN_URL_FALAR_COMIGO } from "@/data/links";
 
 const NAV_LINKS = [
   { label: "Trajetória", href: "#trajetoria" },
-  { label: "Contato", href: LINKEDIN_URL_CONTATO, target: "_blank", rel: "noopener noreferrer" },
+  { label: "Especialidades", href: "#especialidades" },
 ];
 
 export default function Header() {
@@ -14,159 +13,165 @@ export default function Header() {
   const toggleMenu = () => setMenuOpen((v) => !v);
 
   return (
-    <>
-      <header
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 20,
+        background: "rgba(250,246,240,0.88)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid var(--border-hairline)",
+      }}
+    >
+      <div
         style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 40,
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "16px clamp(20px,5vw,40px)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: 16,
-          padding: "14px clamp(16px,4vw,56px)",
-          background: "rgba(250,246,240,0.86)",
-          backdropFilter: "blur(14px)",
-          borderBottom: "1px solid var(--border-hairline)",
+          gap: 20,
         }}
       >
-        <Button
-          href="/cv"
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="secondary"
-          size="md"
-          style={{ flex: "none" }}
-        >
-          Baixar CV
-        </Button>
+        <nav className="nav-desktop" style={{ alignItems: "center", gap: "clamp(18px,3vw,34px)" }}>
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="link-hover-magenta"
+              style={{ fontSize: 14.5, fontWeight: 500, color: "var(--ink-soft)" }}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="/cv"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="press-99"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              background: "transparent",
+              color: "var(--ink)",
+              border: "1px solid var(--border-strong)",
+              borderRadius: 999,
+              padding: "11px 21px",
+              fontSize: 14.5,
+              fontWeight: 600,
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--stone-100)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+          >
+            Baixar CV
+          </a>
+          <a
+            href={LINKEDIN_URL_FALAR_COMIGO}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="press-99"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              background: "var(--ink)",
+              color: "#fff",
+              borderRadius: 999,
+              padding: "12px 22px",
+              fontSize: 14.5,
+              fontWeight: 600,
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--night)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "var(--ink)")}
+          >
+            Falar comigo <span style={{ fontSize: 15 }}>→</span>
+          </a>
+        </nav>
 
+        <button
+          aria-label="Menu"
+          onClick={toggleMenu}
+          className="nav-mobile-toggle"
+          style={{ flexDirection: "column", gap: 5, background: "none", border: 0, padding: 10, cursor: "pointer" }}
+        >
+          <span style={{ width: 24, height: 1.6, background: "var(--ink)", display: "block" }} />
+          <span style={{ width: 24, height: 1.6, background: "var(--ink)", display: "block" }} />
+          <span style={{ width: 24, height: 1.6, background: "var(--ink)", display: "block" }} />
+        </button>
+      </div>
+
+      {menuOpen && (
         <nav
+          className="nav-mobile-toggle"
           style={{
-            display: "none",
-            alignItems: "center",
-            gap: 28,
-            fontSize: "var(--text-sm)",
-            fontWeight: "var(--weight-medium)",
+            flexDirection: "column",
+            gap: 4,
+            padding: "8px 20px 22px",
+            borderTop: "1px solid var(--border-hairline)",
+            background: "var(--paper)",
           }}
         >
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              target={link.target}
-              rel={link.rel}
-              style={{ color: "var(--text-body)" }}
+              onClick={toggleMenu}
+              style={{
+                padding: "14px 4px",
+                fontSize: 17,
+                fontWeight: 500,
+                color: "var(--ink)",
+                borderBottom: "1px solid var(--stone-100)",
+              }}
             >
               {link.label}
             </a>
           ))}
-        </nav>
-
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <Button
+          <a
+            href="/cv"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={toggleMenu}
+            style={{
+              marginTop: 14,
+              display: "inline-flex",
+              justifyContent: "center",
+              alignItems: "center",
+              background: "transparent",
+              color: "var(--ink)",
+              border: "1px solid var(--border-strong)",
+              borderRadius: 999,
+              padding: "14px 22px",
+              fontSize: 15,
+              fontWeight: 600,
+            }}
+          >
+            Baixar CV
+          </a>
+          <a
             href={LINKEDIN_URL_FALAR_COMIGO}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ background: "var(--ink)", color: "#fff", borderRadius: "var(--radius-pill)", boxShadow: "none" }}
-          >
-            Falar comigo
-          </Button>
-          <button
-            aria-label="Abrir menu"
             onClick={toggleMenu}
             style={{
+              marginTop: 12,
               display: "inline-flex",
-              alignItems: "center",
               justifyContent: "center",
-              width: 44,
-              height: 44,
-              flex: "none",
-              border: "none",
-              background: "transparent",
-              borderRadius: "var(--radius-md)",
-              cursor: "pointer",
+              alignItems: "center",
+              gap: 10,
+              background: "var(--ink)",
+              color: "#fff",
+              borderRadius: 999,
+              padding: "15px 22px",
+              fontSize: 15,
+              fontWeight: 600,
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--surface-inset)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
           >
-            <span style={{ display: "flex", flexDirection: "column", gap: 5, width: 22 }}>
-              <span style={{ height: 2, background: "var(--text-strong)", borderRadius: 2 }} />
-              <span style={{ height: 2, background: "var(--text-strong)", borderRadius: 2 }} />
-            </span>
-          </button>
-        </div>
-      </header>
-
-      {menuOpen && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 60,
-            background: "rgba(20,16,14,0.5)",
-            backdropFilter: "blur(2px)",
-          }}
-          onClick={toggleMenu}
-        >
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              right: 0,
-              bottom: 0,
-              width: "min(360px,86vw)",
-              background: "var(--paper)",
-              padding: "26px 24px",
-              display: "flex",
-              flexDirection: "column",
-              gap: 6,
-              boxShadow: "var(--shadow-lg)",
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10 }}>
-              <button
-                aria-label="Fechar"
-                onClick={toggleMenu}
-                style={{
-                  width: 40,
-                  height: 40,
-                  border: "none",
-                  background: "var(--surface-inset)",
-                  borderRadius: "var(--radius-pill)",
-                  fontSize: 18,
-                  color: "var(--text-strong)",
-                  cursor: "pointer",
-                }}
-              >
-                ✕
-              </button>
-            </div>
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.target}
-                rel={link.rel}
-                onClick={toggleMenu}
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "var(--text-xl)",
-                  color: "var(--text-strong)",
-                  padding: "10px 0",
-                  borderBottom: "1px solid var(--border-hairline)",
-                }}
-              >
-                {link.label}
-              </a>
-            ))}
-            <p style={{ margin: "18px 0 0", fontSize: "var(--text-2xs)", color: "var(--text-muted)" }}>
-              Growth · Produto · IA
-            </p>
-          </div>
-        </div>
+            Falar comigo <span>→</span>
+          </a>
+        </nav>
       )}
-    </>
+    </header>
   );
 }

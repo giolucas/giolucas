@@ -42,3 +42,38 @@ a:hover {
   color: var(--brand-primary);
   border-bottom-color: var(--brand-primary);
 }
+
+.link-hover-magenta:hover {
+  color: var(--brand-primary) !important;
+}
+
+.link-hover-magenta-border:hover {
+  color: var(--brand-primary) !important;
+  border-color: var(--brand-primary) !important;
+}
+
+.press-99:active {
+  transform: scale(0.99);
+}
+
+.press-93:active {
+  transform: scale(0.93);
+}
+
+.nav-desktop {
+  display: none;
+}
+
+.nav-mobile-toggle {
+  display: flex;
+}
+
+@media (min-width: 860px) {
+  .nav-desktop {
+    display: flex;
+  }
+
+  .nav-mobile-toggle {
+    display: none;
+  }
+}

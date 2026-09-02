@@ -5,32 +5,36 @@ export default function RoleCard({ role }: { role: Role }) {
   return (
     <article
       style={{
-        flex: "none",
-        width: "clamp(268px,80vw,380px)",
         scrollSnapAlign: "start",
+        flex: "0 0 min(86vw,400px)",
         display: "flex",
         flexDirection: "column",
         background: "var(--surface-card)",
-        borderRadius: "var(--radius-xl)",
+        border: "1px solid var(--border-hairline)",
+        borderRadius: 20,
         boxShadow: "var(--shadow-sm)",
         overflow: "hidden",
       }}
     >
-      <div style={{ height: 8, background: role.color }} />
-      <div style={{ padding: "clamp(20px,3vw,28px)", display: "flex", flexDirection: "column", gap: 14, flex: 1 }}>
+      <div style={{ height: 6, background: role.color }} />
+      <div style={{ display: "flex", flexDirection: "column", gap: 12, padding: "24px 24px 26px", flex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
           <span
             style={{
-              fontSize: "var(--text-2xs)",
-              letterSpacing: "var(--tracking-label)",
+              fontSize: 11.5,
+              fontWeight: 700,
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
-              fontWeight: "var(--weight-bold)",
-              color: "var(--text-muted)",
+              color: "var(--stone-500)",
             }}
           >
             {role.company}
           </span>
-          {role.badge && <Badge tone={role.badgeTone}>{role.badge}</Badge>}
+          {role.badge && (
+            <Badge tone={role.badgeTone} style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 13px" }}>
+              {role.badge}
+            </Badge>
+          )}
         </div>
 
         <h3
@@ -38,43 +42,53 @@ export default function RoleCard({ role }: { role: Role }) {
             margin: 0,
             fontFamily: "var(--font-display)",
             fontWeight: 400,
-            fontSize: "clamp(1.4rem,3.4vw,1.9rem)",
-            lineHeight: 1.1,
-            letterSpacing: "var(--tracking-display)",
+            fontSize: 29,
+            lineHeight: 1.08,
+            letterSpacing: "-0.01em",
             color: "var(--text-strong)",
             textWrap: "pretty",
           }}
         >
           {role.title}
         </h3>
-        <p style={{ margin: 0, fontSize: "var(--text-sm)", color: "var(--text-muted)", fontVariantNumeric: "tabular-nums" }}>
+        <p style={{ margin: 0, fontSize: 14.5, color: "var(--stone-500)" }}>
           {role.period} · {role.place}
         </p>
-        <p style={{ margin: 0, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-body)", textWrap: "pretty" }}>
+        <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "var(--text-body)", textWrap: "pretty" }}>
           {role.summary}
         </p>
 
-        <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
+        <ul style={{ margin: "4px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
           {role.highlights.map((h) => (
-            <li key={h} style={{ display: "flex", gap: 10, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-body)" }}>
-              <span style={{ color: "var(--brand-primary)", flex: "none" }}>◆</span>
+            <li
+              key={h}
+              style={{ display: "flex", gap: 11, alignItems: "flex-start", fontSize: 14.5, lineHeight: 1.5, color: "var(--text-body)", textWrap: "pretty" }}
+            >
+              <span
+                style={{
+                  flex: "0 0 auto",
+                  width: 7,
+                  height: 7,
+                  marginTop: 7,
+                  background: "var(--brand-primary)",
+                  transform: "rotate(45deg)",
+                }}
+              />
               <span>{h}</span>
             </li>
           ))}
         </ul>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: "auto", paddingTop: 6 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: "auto", paddingTop: 20 }}>
           {role.tags.map((t) => (
             <span
               key={t}
               style={{
-                fontSize: "var(--text-2xs)",
-                fontWeight: "var(--weight-medium)",
-                letterSpacing: "0.02em",
-                color: "var(--text-body)",
-                background: "var(--surface-inset)",
-                borderRadius: "var(--radius-pill)",
-                padding: "6px 12px",
+                fontSize: 13,
+                color: "var(--stone-700)",
+                background: "var(--stone-100)",
+                borderRadius: 999,
+                padding: "7px 14px",
               }}
             >
               {t}

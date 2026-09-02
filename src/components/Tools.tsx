@@ -1,4 +1,3 @@
-import Eyebrow from "@/components/ui/Eyebrow";
 import { tools, aiTools } from "@/data/tools";
 
 function PillGroup({ items }: { items: string[] }) {
@@ -8,13 +7,11 @@ function PillGroup({ items }: { items: string[] }) {
         <span
           key={item}
           style={{
-            fontSize: "var(--text-xs)",
-            fontWeight: "var(--weight-medium)",
-            letterSpacing: "0.02em",
-            color: "var(--text-body)",
-            background: "var(--surface-inset)",
-            borderRadius: "var(--radius-pill)",
-            padding: "8px 14px",
+            fontSize: 13,
+            color: "var(--stone-700)",
+            background: "var(--stone-100)",
+            borderRadius: 999,
+            padding: "7px 14px",
           }}
         >
           {item}
@@ -26,51 +23,25 @@ function PillGroup({ items }: { items: string[] }) {
 
 export default function Tools() {
   return (
-    <section style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(16px,4vw,56px) clamp(48px,8vw,96px)" }}>
-      <Eyebrow rule>Domínio de ferramentas</Eyebrow>
-      <h2
-        style={{
-          margin: "16px 0 clamp(28px,4vw,40px)",
-          fontFamily: "var(--font-display)",
-          fontWeight: 400,
-          fontSize: "clamp(1.75rem,4vw,2.875rem)",
-          lineHeight: 1.06,
-          letterSpacing: "var(--tracking-display)",
-          color: "var(--text-strong)",
-          maxWidth: "26ch",
-        }}
-      >
-        Stack que uso no dia a dia.
+    <section id="ferramentas" style={{ padding: "clamp(34px,5vw,60px) 0", borderBottom: "1px solid var(--border-hairline)", scrollMarginTop: 84 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+        <span style={{ fontSize: 14, fontWeight: 700, color: "var(--brand-primary)" }}>03</span>
+        <span style={{ width: 22, height: 1.4, background: "var(--brand-primary)" }} />
+      </div>
+      <h2 style={{ margin: "0 0 30px", fontSize: 12.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ink)" }}>
+        Ferramentas
       </h2>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "clamp(24px,4vw,32px)" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
         <div>
-          <p
-            style={{
-              margin: "0 0 12px",
-              fontSize: "var(--text-2xs)",
-              fontWeight: "var(--weight-bold)",
-              letterSpacing: "var(--tracking-label)",
-              textTransform: "uppercase",
-              color: "var(--text-muted)",
-            }}
-          >
+          <p style={{ margin: "0 0 12px", fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--stone-500)" }}>
             Ferramentas
           </p>
           <PillGroup items={tools} />
         </div>
 
         <div>
-          <p
-            style={{
-              margin: "0 0 12px",
-              fontSize: "var(--text-2xs)",
-              fontWeight: "var(--weight-bold)",
-              letterSpacing: "var(--tracking-label)",
-              textTransform: "uppercase",
-              color: "var(--text-muted)",
-            }}
-          >
+          <p style={{ margin: "0 0 12px", fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--stone-500)" }}>
             Ferramentas de IA
           </p>
           <PillGroup items={aiTools} />

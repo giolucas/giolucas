@@ -4,7 +4,7 @@ import "./globals.css";
 
 const title = "Giovanni Lucas — Growth, Produto, IA";
 const description =
-  "Treze anos de carreira trabalhando para impactar empresas com estratégias de growth e produto. Experimentação, métricas e gestão de times. Passagens por Superlógica, Stefanini, Zup, Advice, Alura e CRMBonus, atuando também como professor universitário desde 2020.";
+  "Transformo problemas de negócio em produtos e crescimento. 13 anos entre startups e corporações, criando valor com estratégia, experimentação e liderança. Passagens por Superlógica, Stefanini, Zup, Advice, Alura e CRMBonus.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://giovannilucas.com.br"),
