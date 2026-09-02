@@ -39,14 +39,10 @@ export default function Footer() {
           display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
           gap: 18,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
-          <span style={{ fontFamily: "var(--font-sans)", fontWeight: 800, fontSize: 24, color: "#fff" }}>GL</span>
-          <span style={{ fontSize: 13, color: "rgba(243,236,226,0.6)" }}>© {new Date().getFullYear()} Giovanni Lucas</span>
-        </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <SocialLink href={LINKEDIN_URL_FOOTER} label="LinkedIn">
             <svg viewBox="0 0 24 24" width={18} height={18} fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
