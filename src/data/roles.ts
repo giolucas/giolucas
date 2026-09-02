@@ -1,16 +1,27 @@
 import type { BadgeTone } from "@/components/ui/Badge";
 
+export interface RolePosition {
+  title: string;
+  period: string;
+  summary: string;
+  highlights: string[];
+  tags: string[];
+}
+
 export interface Role {
   company: string;
-  title: string;
+  title?: string;
   period: string;
   place: string;
   badge?: string;
   badgeTone: BadgeTone;
   color: string;
-  summary: string;
-  highlights: string[];
-  tags: string[];
+  summary?: string;
+  highlights?: string[];
+  tags?: string[];
+  /** When a role spans multiple positions at the same company, list them here
+   * (most recent first) instead of using title/summary/highlights/tags. */
+  positions?: RolePosition[];
 }
 
 export const roles: Role[] = [
@@ -81,51 +92,48 @@ export const roles: Role[] = [
   },
   {
     company: "Zup Innovation",
-    title: "Head de Produto e Experiência",
-    period: "dez 2020 — mai 2023",
-    place: "2 anos 6 meses",
+    period: "abr 2019 — mai 2023",
+    place: "4 anos 1 mês",
     badge: "Liderando 116 zuppers",
     badgeTone: "cobalt",
     color: "var(--night-soft)",
-    summary:
-      "Head da tribo de cartões — 116 pessoas e quase 20 lideranças entre tech leads e POs apoiando squads da comunidade de cartões do Itaú.",
-    highlights: [
-      "Montagem de times a partir das demandas do cliente final",
-      "OKRs, métricas e técnicas de priorização",
-      "Growth com foco em go-to-market e conversão",
+    positions: [
+      {
+        title: "Head de Produto e Experiência",
+        period: "dez 2020 — mai 2023 · 2 anos 6 meses",
+        summary:
+          "Head da tribo de cartões — 116 pessoas e quase 20 lideranças entre tech leads e POs apoiando squads da comunidade de cartões do Itaú.",
+        highlights: [
+          "Montagem de times a partir das demandas do cliente final",
+          "OKRs, métricas e técnicas de priorização",
+          "Growth com foco em go-to-market e conversão",
+        ],
+        tags: ["Head", "OKRs", "Experiência"],
+      },
+      {
+        title: "PMM / Growth Product Manager / DSM",
+        period: "dez 2019 — dez 2020 · 1 ano 1 mês",
+        summary: "Gestão de pessoas e produtos com agendas de discovery e delivery em dual track agile.",
+        highlights: [
+          "Experimentos: testes A/B e deploy em círculos",
+          "Tração com Bullseye Framework",
+          "Dados e métricas AARRR",
+        ],
+        tags: ["Dual track", "AARRR", "Bullseye"],
+      },
+      {
+        title: "Product Growth / Consultor",
+        period: "abr 2019 — dez 2019 · 9 meses",
+        summary:
+          "Organização e operação de growth hacking e criação de times em clientes de banking e telecom, com foco na cultura de testes.",
+        highlights: [
+          "Processos e frameworks para tracionar de startups a big corps",
+          "Crescimento holístico via AARRR",
+          "Facilitação de workshops e cursos",
+        ],
+        tags: ["Consultoria", "Banking", "Workshops"],
+      },
     ],
-    tags: ["Head", "OKRs", "Experiência"],
-  },
-  {
-    company: "Zup Innovation",
-    title: "PMM / Growth Product Manager / DSM",
-    period: "dez 2019 — dez 2020",
-    place: "1 ano 1 mês",
-    badgeTone: "magenta",
-    color: "var(--garimpa-pink)",
-    summary: "Gestão de pessoas e produtos com agendas de discovery e delivery em dual track agile.",
-    highlights: [
-      "Experimentos: testes A/B e deploy em círculos",
-      "Tração com Bullseye Framework",
-      "Dados e métricas AARRR",
-    ],
-    tags: ["Dual track", "AARRR", "Bullseye"],
-  },
-  {
-    company: "Zup Innovation",
-    title: "Product Growth / Consultor",
-    period: "abr 2019 — dez 2019",
-    place: "9 meses",
-    badgeTone: "magenta",
-    color: "var(--accent-rust)",
-    summary:
-      "Organização e operação de growth hacking e criação de times em clientes de banking e telecom, com foco na cultura de testes.",
-    highlights: [
-      "Processos e frameworks para tracionar de startups a big corps",
-      "Crescimento holístico via AARRR",
-      "Facilitação de workshops e cursos",
-    ],
-    tags: ["Consultoria", "Banking", "Workshops"],
   },
   {
     company: "Stefanini",

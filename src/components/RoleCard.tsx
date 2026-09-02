@@ -1,5 +1,69 @@
 import Badge from "@/components/ui/Badge";
-import type { Role } from "@/data/roles";
+import type { Role, RolePosition } from "@/data/roles";
+
+function Highlights({ items }: { items: string[] }) {
+  return (
+    <ul style={{ margin: "4px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
+      {items.map((h) => (
+        <li
+          key={h}
+          style={{ display: "flex", gap: 11, alignItems: "flex-start", fontSize: 14.5, lineHeight: 1.5, color: "var(--text-body)", textWrap: "pretty" }}
+        >
+          <span
+            style={{
+              flex: "0 0 auto",
+              width: 7,
+              height: 7,
+              marginTop: 7,
+              background: "var(--brand-primary)",
+              transform: "rotate(45deg)",
+            }}
+          />
+          <span>{h}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Tags({ items }: { items: string[] }) {
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+      {items.map((t) => (
+        <span
+          key={t}
+          style={{
+            fontSize: 13,
+            color: "var(--stone-700)",
+            background: "var(--stone-100)",
+            borderRadius: 999,
+            padding: "7px 14px",
+          }}
+        >
+          {t}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function PositionBlock({ position, withTopBorder }: { position: RolePosition; withTopBorder: boolean }) {
+  return (
+    <div style={{ paddingTop: withTopBorder ? 16 : 0, borderTop: withTopBorder ? "1px solid var(--border-hairline)" : "none" }}>
+      <h4 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 20, lineHeight: 1.15, letterSpacing: "-0.01em", color: "var(--text-strong)", textWrap: "pretty" }}>
+        {position.title}
+      </h4>
+      <p style={{ margin: "4px 0 0", fontSize: 13.5, color: "var(--stone-500)" }}>{position.period}</p>
+      <p style={{ margin: "8px 0 0", fontSize: 15, lineHeight: 1.55, color: "var(--text-body)", textWrap: "pretty" }}>{position.summary}</p>
+      <div style={{ marginTop: 10 }}>
+        <Highlights items={position.highlights} />
+      </div>
+      <div style={{ marginTop: 12 }}>
+        <Tags items={position.tags} />
+      </div>
+    </div>
+  );
+}
 
 export default function RoleCard({ role }: { role: Role }) {
   return (
@@ -37,64 +101,43 @@ export default function RoleCard({ role }: { role: Role }) {
           )}
         </div>
 
-        <h3
-          style={{
-            margin: 0,
-            fontFamily: "var(--font-display)",
-            fontWeight: 400,
-            fontSize: 29,
-            lineHeight: 1.08,
-            letterSpacing: "-0.01em",
-            color: "var(--text-strong)",
-            textWrap: "pretty",
-          }}
-        >
-          {role.title}
-        </h3>
-        <p style={{ margin: 0, fontSize: 14.5, color: "var(--stone-500)" }}>
-          {role.period} · {role.place}
-        </p>
-        <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "var(--text-body)", textWrap: "pretty" }}>
-          {role.summary}
-        </p>
-
-        <ul style={{ margin: "4px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
-          {role.highlights.map((h) => (
-            <li
-              key={h}
-              style={{ display: "flex", gap: 11, alignItems: "flex-start", fontSize: 14.5, lineHeight: 1.5, color: "var(--text-body)", textWrap: "pretty" }}
-            >
-              <span
-                style={{
-                  flex: "0 0 auto",
-                  width: 7,
-                  height: 7,
-                  marginTop: 7,
-                  background: "var(--brand-primary)",
-                  transform: "rotate(45deg)",
-                }}
-              />
-              <span>{h}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: "auto", paddingTop: 20 }}>
-          {role.tags.map((t) => (
-            <span
-              key={t}
+        {role.positions ? (
+          <>
+            <p style={{ margin: 0, fontSize: 14.5, color: "var(--stone-500)" }}>
+              {role.period} · {role.place}
+            </p>
+            {role.positions.map((position, i) => (
+              <PositionBlock key={position.title} position={position} withTopBorder={i > 0} />
+            ))}
+          </>
+        ) : (
+          <>
+            <h3
               style={{
-                fontSize: 13,
-                color: "var(--stone-700)",
-                background: "var(--stone-100)",
-                borderRadius: 999,
-                padding: "7px 14px",
+                margin: 0,
+                fontFamily: "var(--font-display)",
+                fontWeight: 400,
+                fontSize: 29,
+                lineHeight: 1.08,
+                letterSpacing: "-0.01em",
+                color: "var(--text-strong)",
+                textWrap: "pretty",
               }}
             >
-              {t}
-            </span>
-          ))}
-        </div>
+              {role.title}
+            </h3>
+            <p style={{ margin: 0, fontSize: 14.5, color: "var(--stone-500)" }}>
+              {role.period} · {role.place}
+            </p>
+            <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "var(--text-body)", textWrap: "pretty" }}>
+              {role.summary}
+            </p>
+            <Highlights items={role.highlights ?? []} />
+            <div style={{ marginTop: "auto", paddingTop: 20 }}>
+              <Tags items={role.tags ?? []} />
+            </div>
+          </>
+        )}
       </div>
     </article>
   );
