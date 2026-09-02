@@ -112,7 +112,6 @@ export default function RoleCarousel() {
         onScroll={onScroll}
         style={{
           display: "flex",
-          alignItems: "flex-start",
           gap: 20,
           overflowX: "auto",
           scrollSnapType: "x mandatory",
