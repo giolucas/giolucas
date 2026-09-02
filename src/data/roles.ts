@@ -45,9 +45,8 @@ export const roles: Role[] = [
   {
     company: "FIAP",
     title: "Professor Shift e Convidado — MBA",
-    period: "fev 2020 — o momento",
+    period: "fev 2020 — set 2026",
     place: "São Paulo",
-    badge: "Atual",
     badgeTone: "amber",
     color: "var(--accent-amber)",
     summary:
